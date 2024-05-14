@@ -1,6 +1,5 @@
 # 2024_05_14_IntegerIndexDateToRemoteControl
 
-You can find here an example of how you can push integer values on IID without RSA system.
 
 In the context of remote control, you want to be able to read input and simulate input on devices.
 
