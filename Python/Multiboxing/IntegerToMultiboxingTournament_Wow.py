@@ -53,6 +53,8 @@ integer_to_key_mapping[122] = ["4",True]
 integer_to_key_mapping[222] = ["4",False]
 integer_to_key_mapping[124] = ["Tab",True]
 integer_to_key_mapping[224] = ["Tab",False]
+integer_to_key_mapping[125] = ["Space",True]
+integer_to_key_mapping[225] = ["Space",False]
 
 
 
@@ -289,7 +291,8 @@ for key in integer_to_key_mapping:
     
 
 def push_to_all_integer(int_value):
-    print("Un coded yet")
+    for key in player_index_to_window_index:
+        push_to_index_integer(key,int_value )
 
 def push_test(window, press, key_id):
     global debug_at_pression_send
