@@ -24,6 +24,8 @@ player_index_to_window_index [0]= [0,1,2,3,4,5,6,7,8,9,10,11]
 
 
 integer_to_key_mapping = {}
+integer_to_key_mapping[100] = ["Space",True]
+integer_to_key_mapping[200] = ["Space",False]
 integer_to_key_mapping[103] = ["Right",True]
 integer_to_key_mapping[203] = ["Right",False]
 integer_to_key_mapping[104] = ["Left",True]
