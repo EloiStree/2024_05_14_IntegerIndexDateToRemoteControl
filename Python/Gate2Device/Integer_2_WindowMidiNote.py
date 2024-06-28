@@ -8,10 +8,30 @@ import struct
 import keyboard
 import time
 import mido
+import socket
 
 # List MIDI device inputs and outputs
 input_names = mido.get_input_names()
 output_names = mido.get_output_names()
+
+listen_port = 7005
+
+# Display local IP addresses
+
+def display_local_ips():
+    hostname = socket.gethostname()
+    ip_addresses = socket.gethostbyname_ex(hostname)[-1]
+    print("Local IP addresses:")
+    for ip_address in ip_addresses:
+        print(ip_address)
+
+display_local_ips()
+
+print("")
+
+print("Listent Port is ", listen_port)
+
+print("")
 
 print("MIDI Device Inputs:")
 for input_name in input_names:
@@ -21,14 +41,14 @@ print("MIDI Device Outputs:")
 for output_name in output_names:
     print(output_name)
 
-server_address = ('', 7005)
+server_address = ('', listen_port)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(server_address)
 
 example=1215100121
 request_offset_to_move=11
-midi_out = mido.open_output('MPK mini play 3')
-#midi_out = mido.open_output('Microsoft GS Wavetable Synth 0')
+#midi_out = mido.open_output('MPK mini play 3')
+midi_out = mido.open_output('Microsoft GS Wavetable Synth 0')
 
 def change_default_midi_out_channel(channel):
     control_change = mido.Message('control_change', channel=channel, control=0)
@@ -66,15 +86,19 @@ def parse_integer_mouse_move(integer_value):
             turn_off_note_on_default_midi_out(note)
         
 
-for i in range(0, 127):
-    parse_integer_mouse_move(1215000121+i*1000)
-    time.sleep(0.4)
-    parse_integer_mouse_move(1215000000+i*1000)
-
-parse_integer_mouse_move(example)
+def test_all_notes():
+    for i in range(0, 127):
+        parse_integer_mouse_move(1201000121+i*1000)
+        time.sleep(0.4)
+        parse_integer_mouse_move(1201000000+i*1000)
+    parse_integer_mouse_move(example)
 
 def integer_to_keyboard_input(int_value):
     parse_integer_mouse_move(int_value)
+
+
+
+# test_all_notes()
 
 # Listen for incoming data
 while True:
