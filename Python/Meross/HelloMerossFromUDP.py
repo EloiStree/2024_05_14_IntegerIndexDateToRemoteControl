@@ -1,5 +1,5 @@
-EMAIL = 'streeeloi@gmail.com'
-PASSWORD = 'Moel2389'
+EMAIL = 'YOUR_MAIL@gmail.com'
+PASSWORD = 'YOUR_PASSWORD'
 
 import asyncio
 import os
